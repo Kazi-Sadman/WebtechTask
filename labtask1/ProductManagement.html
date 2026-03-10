@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Management Page</title>
+
+<style>
+body
+{
+    font-family: Arial;
+    background-color: white;
+}
+
+.box
+{
+    width: 330px;
+    margin: 100px auto;
+    padding: 35px;
+    border: 4px solid black;
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+}
+
+input
+{
+    padding: 10px;
+    margin: 10px;
+    width: 220px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Product Management</h2>
+
+<p>Unit Price: <b>1000</b></p>
+
+<label>Quantity:</label><br>
+<input type="number" id="quantity" value="0" min="0">
+
+<br>
+
+<label>Total Price:</label><br>
+<input type="text" id="totalPrice" readonly>
+
+</div>
+
+<script>
+
+var unitPrice = 1000;
+
+var quantityInput = document.getElementById("quantity");
+var totalDisplay = document.getElementById("totalPrice");
+
+quantityInput.addEventListener("input", calculateTotal);
+
+function calculateTotal()
+{
+
+    var qty = parseInt(quantityInput.value);
+
+    if(qty < 0)
+    {
+        alert("Quantity cannot be negative");
+        quantityInput.value = 0;
+        totalDisplay.value = 0;
+        return;
+    }
+
+    var total = unitPrice * qty;
+
+    totalDisplay.value = total;
+
+    if(total > 1000)
+    {
+        alert("Congratulations! You are eligible for a gift coupon!");
+    }
+
+}
+
+</script>
+
+</body>
+</html>
